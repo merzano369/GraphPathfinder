@@ -70,13 +70,14 @@ namespace GraphPathfinder.Algorithms
                     continue;
                 }
 
-                iterations++;
                 visited.Add(current);
 
                 if (current == target) break;
 
                 foreach (var edge in graph.GetOutgoingEdges(current))
                 {
+                    iterations++;
+
                     var neighbor = edge.Target;
                     var tentativeGScore = gScores[current] + edge.Weight;
 

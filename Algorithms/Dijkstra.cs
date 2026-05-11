@@ -57,7 +57,6 @@ namespace GraphPathfinder.Algorithms
                     continue;
                 }
 
-                iterations++;
                 visited.Add(current);
 
                 if (current == target)
@@ -67,6 +66,8 @@ namespace GraphPathfinder.Algorithms
 
                 foreach (var edge in graph.GetOutgoingEdges(current))
                 {
+                    iterations++;
+
                     var neighbor = edge.Target;
                     var newDistance = distances[current] + edge.Weight;
 
