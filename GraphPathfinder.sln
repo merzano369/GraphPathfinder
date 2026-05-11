@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphPathfinder", "GraphPathfinder.csproj", "{69F20AEE-B1A9-A378-F36A-BD1519805E6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69F20AEE-B1A9-A378-F36A-BD1519805E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F20AEE-B1A9-A378-F36A-BD1519805E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F20AEE-B1A9-A378-F36A-BD1519805E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F20AEE-B1A9-A378-F36A-BD1519805E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9DC05EA-CA8A-4407-A02B-D4F80FD12C61}
+	EndGlobalSection
+EndGlobal
