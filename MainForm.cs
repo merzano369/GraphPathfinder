@@ -287,6 +287,23 @@ namespace GraphPathfinder
         }
 
         /// <summary>
+        /// Returns the current rendered image of the graph.
+        /// </summary>
+        /// <returns>A new <see cref="Bitmap"/> that contains the graph rendering for the current canvas size.</returns>
+        /// <remarks>
+        /// The caller is responsible for disposing the returned <see cref="Bitmap"/>.
+        /// </remarks>
+        public Bitmap GetGraphImage()
+        {
+            Bitmap bmp = new Bitmap(canvasBox.Width, canvasBox.Height);
+            using Graphics g = Graphics.FromImage(bmp);
+
+            _visualizer.Visualize(_controller.CurrentGraph, g, _presenter.LastPathResult);
+
+            return bmp;
+        }
+
+        /// <summary>
         /// Number of graph vertices.
         /// </summary>
         public int NodeCount

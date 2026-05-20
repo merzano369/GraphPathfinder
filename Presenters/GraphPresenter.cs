@@ -271,7 +271,7 @@ namespace GraphPathfinder.Presenters
 
         /// <summary>
         /// Event handler for the export request event.
-        /// Saves the last pathfinding result to a file.
+        /// Saves the last successful pathfinding result as text and exports the current graph visualization as an image.
         /// </summary>
         /// <param name="sender">Event source.</param>
         /// <param name="e">Event arguments.</param>
@@ -289,8 +289,25 @@ namespace GraphPathfinder.Presenters
                 return;
             }
 
-            _exportService.ExportPath(_lastPathResult, "GraphResult.txt");
-            _view.UpdateStatus("Successfully saved");
+            try
+            {
+                string baseFileName = "GraphResult";
+                string textFile = $"{baseFileName}.txt";
+                string imageFile = $"{baseFileName}.png";
+
+                _exportService.ExportPath(_lastPathResult, textFile);
+
+                using (var graphImage = _view.GetGraphImage())
+                {
+                    _exportService.ExportImage(graphImage, imageFile);
+                }
+
+                _view.UpdateStatus("Successfully saved text and image");
+            }
+            catch (Exception ex)
+            {
+                _view.ShowError(ex.Message);
+            }
         }
 
         /// <summary>

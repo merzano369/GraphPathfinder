@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 
 namespace GraphPathfinder.Presenters
 {
@@ -87,6 +88,15 @@ namespace GraphPathfinder.Presenters
         /// </summary>
         /// <param name="nodeIds">Array of vertex identifier strings.</param>
         void UpdateNodeComboboxes(string[] nodeIds);
+
+        /// <summary>
+        /// Returns the current rendered image of the graph.
+        /// </summary>
+        /// <returns>A new <see cref="Bitmap"/> containing the graph rendering.</returns>
+        /// <remarks>
+        /// The caller is responsible for disposing the returned <see cref="Bitmap"/>.
+        /// </remarks>
+        Bitmap GetGraphImage();
 
         /// <summary>
         /// Event that occurs when the user requests to find a path.

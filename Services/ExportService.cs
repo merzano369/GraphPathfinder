@@ -1,11 +1,14 @@
+using System;
+using System.Drawing;
 using System.IO;
+using System.Drawing.Imaging;
 using GraphPathfinder.Models;
 
 namespace GraphPathfinder.Services
 {
     /// <summary>
-    /// Service for exporting pathfinding results to a text file.
-    /// Saves information about the algorithm, path, distance, and number of iterations.
+    /// Service for exporting pathfinding results.
+    /// Supports exporting the result as text and saving a rendered graph image.
     /// </summary>
     public class ExportService
     {
@@ -35,6 +38,28 @@ namespace GraphPathfinder.Services
             catch (UnauthorizedAccessException)
             {
                 throw new InvalidOperationException("No access to the file. Check write permissions.");
+            }
+        }
+
+        /// <summary>
+        /// Saves the specified bitmap image to a file.
+        /// </summary>
+        /// <param name="image">Bitmap image to export.</param>
+        /// <param name="filePath">Target file path (PNG).</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="image"/> or <paramref name="filePath"/> is <c>null</c>.</exception>
+        /// <exception cref="InvalidOperationException">Thrown when image saving fails.</exception>
+        public void ExportImage(Bitmap image, string filePath)
+        {
+            if (image == null) throw new ArgumentNullException(nameof(image));
+            if (filePath == null) throw new ArgumentNullException(nameof(filePath));
+
+            try
+            {
+                image.Save(filePath, ImageFormat.Png);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to save image: {ex.Message}");
             }
         }
     }
